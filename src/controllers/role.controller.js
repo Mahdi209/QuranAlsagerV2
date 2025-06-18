@@ -2,7 +2,6 @@ const Role = require('../models/roles');
 const { sendResponse } = require('../Utilities/response');
 
 const roleController = {
-    // Create a new role
     create: async (req, res) => {
         try {
             const { name, permissions } = req.body;
@@ -22,7 +21,6 @@ const roleController = {
         }
     },
 
-    // Get all roles
     getAll: async (req, res) => {
         try {
             const roles = await Role.find();
@@ -32,7 +30,6 @@ const roleController = {
         }
     },
 
-    // Get role by id
     getById: async (req, res) => {
         try {
             const role = await Role.findById(req.params.id);
@@ -44,8 +41,6 @@ const roleController = {
             return sendResponse(res, null, error.message, 500);
         }
     },
-
-    // Update role
     update: async (req, res) => {
         try {
             const { name, permissions } = req.body;
@@ -74,7 +69,6 @@ const roleController = {
         }
     },
 
-    // Delete role
     delete: async (req, res) => {
         try {
             const role = await Role.findByIdAndDelete(req.params.id);
